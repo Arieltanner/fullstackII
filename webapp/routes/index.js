@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
   });
   var MongoClient = require('mongodb').MongoClient
 
-  MongoClient.connect('mongodb://localhost:27017/foo', function (err, client) {
+  MongoClient.connect('mongodb://localhost:27017/maps', function (err, client) {
     if (err) throw err
     var resultado;
     var db = client.db('foo')
@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/getUsers', function (req, res, next) {
 
-  MongoClient.connect('mongodb://localhost:27017/foo', function (err, client) {
+  MongoClient.connect('mongodb://localhost:27017/maps', function (err, client) {
     if (err) throw err
     var resultado;
     var db = client.db('foo')
@@ -60,11 +60,13 @@ router.post('/saveUsers', function (req, res, next) {
 
   var j = {
     nombre: req.body.nombre,
-    password: req.body.password
+    password: req.body.password,
+    lat: req.body.lat,
+    lon: req.body.lon
   };
 
   try {
-    MongoClient.connect('mongodb://localhost:27017/foo', function (err, client) {
+    MongoClient.connect('mongodb://localhost:27017/maps', function (err, client) {
       if (err) throw err
       var resultado;
       var db = client.db('foo')

@@ -1,0 +1,17 @@
+<div *ngFor="let item of listaUsuarios">
+
+  <div *ngIf="item.lat !== undefined">
+    <p>Nombre: {{item?.nombre}}</p>
+    <p>Apellido: {{item?.nombre}}</p>
+    <p>Vive en:</p>
+    <p>Lat: {{item?.lat}}</p>
+    <p>Long: {{item?.lon}}</p>
+    <button class="btn btn-primary" (click)="mostrarMapa(item.nombre,item.lat, item.lon)">Ver en mapa!</button>
+    <h1>{{noAccess}}</h1>
+  </div>
+</div>
+
+
+<div *ngIf="access">
+  <app-mapa [item]="item"></app-mapa>
+</div>
